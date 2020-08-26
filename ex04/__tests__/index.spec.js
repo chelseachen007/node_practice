@@ -1,18 +1,22 @@
 const Sequelize = require('sequelize');
 test('练习04 完成一个一对多查询', async () => {
 
-    const sequelize = new Sequelize({
+    // const sequelize = new Sequelize({
+    //     host: 'localhost',
+    //     dialect: 'sqlite',
+    //     operatorsAliases: true,
+    //     // 关闭执行日志
+    //     logging: false
+    // });
+    const sequelize = new Sequelize('demo', 'root', 'bxh447690', {
+        dialect: "mysql",
         host: 'localhost',
-        dialect: 'sqlite',
-        operatorsAliases: true,
-        // 关闭执行日志
-        logging: false
-    });
+        operatorsAliases: false
+      });
 
     // 初始化模型
     const { initModel } = require('../index')
     const { Product, User } = await initModel(sequelize)
-
     // 设置数据
     user = await User.create({
         name: 'Tom',
@@ -26,5 +30,5 @@ test('练习04 完成一个一对多查询', async () => {
     const ret = await Product.findAll({
         attributes: ['title']
     })
-    expect(JSON.parse(JSON.stringify(ret))).toEqual([{"title": "商品一"}, {"title": "商品二"}])
+    expect(JSON.parse(JSON.stringify(ret))).toEqual([{ "title": "商品一" }, { "title": "商品二" }])
 })
