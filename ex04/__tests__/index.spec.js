@@ -1,18 +1,18 @@
 const Sequelize = require('sequelize');
 test('练习04 完成一个一对多查询', async () => {
 
-    // const sequelize = new Sequelize({
-    //     host: 'localhost',
-    //     dialect: 'sqlite',
-    //     operatorsAliases: true,
-    //     // 关闭执行日志
-    //     logging: false
-    // });
-    const sequelize = new Sequelize('demo', 'root', 'bxh447690', {
-        dialect: "mysql",
+    const sequelize = new Sequelize({
         host: 'localhost',
-        operatorsAliases: false
-      });
+        dialect: 'sqlite',
+        operatorsAliases: true,
+        // 关闭执行日志
+        logging: false
+    });
+    // const sequelize = new Sequelize('demo', 'root', 'bxh447690', {
+    //     dialect: "mysql",
+    //     host: 'localhost',
+    //     operatorsAliases: false
+    //   });
 
     // 初始化模型
     const { initModel } = require('../index')
