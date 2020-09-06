@@ -1,4 +1,5 @@
 const fs = require('fs')
+//暗号：分治算法
 module.exports.createLoader = config => {
     const loader = (scanFolder, cb) => {
         const files = fs.readdirSync(scanFolder);
@@ -12,12 +13,9 @@ module.exports.createLoader = config => {
     return {
         initFunction: scanFolder => {
             const ret = {}
-            // ##BEGIN## 代码已加密
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOEJOEEOOIOSOOSSOEXJPPOEIOSJOOIOESJIIOEEOEJOSOOSSOEXJPAJEHJPPOSEOSXOEJOSSOESOOIOEOOSSJPAJEHOSJOEXOSSOOIOEAOSSJIIOPJOESJPHJEHJXIJXAJEHOPX
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOSJOEEOESOEIOEAJEHOSEOPJOESOSJJEHJXIJEHOSJOEXOSSOOIOEAOSSJIIOPJOESJPPOSJOEEOESOSEOSXOSPJPH
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOEXOSSOEAOOOOSEOSXOEJOSSOESOOIOEOOSSOOEJEHJXIJEHOSEOPJOESOSJ
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOPAJPH
-            // ##END##
+            loader(scanFolder, (filename, file) => {
+                ret[filename] = file(config)
+            })
             return ret
         }
     }
